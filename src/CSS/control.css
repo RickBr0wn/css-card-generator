@@ -1,0 +1,66 @@
+.control-panel-outer-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.inner-container {
+  margin: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 48%;
+}
+
+.small-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: left;
+  margin-bottom: 16px;
+}
+
+.label-container {
+  width: 30px;
+}
+
+.selectors-container {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+
+h5 {
+  color: #2cc3f2;
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.inner-container h5 {
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.edges-container {
+  height: 28px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 24px;
+}
+
+.edges {
+  width: 28px;
+  margin-left: 4px;
+  border: 1px #333 solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
