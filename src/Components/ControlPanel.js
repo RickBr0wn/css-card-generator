@@ -10,7 +10,13 @@ export default function ControlPanel({
   width,
   setWidth,
   color,
-  setColor
+  setColor,
+  hover,
+  setHover,
+  image,
+  setImage,
+  padding,
+  setPadding
 }) {
   return (
     <div className='control-panel-outer-container'>
@@ -41,7 +47,20 @@ export default function ControlPanel({
             <ColorButton color={color} setColor={setColor} />
           </div>
         </div>
-        <div className='small-container' />
+        <div className='small-container'>
+          <div className='label-container'>
+            <h5>image</h5>
+            <h4>Add an image</h4>
+          </div>
+          <div className='selectors-container'>
+            <Button
+              prop={image}
+              setProp={setImage}
+              truthy={'on'}
+              falsey={'off'}
+            />
+          </div>
+        </div>
         <div className='small-container' />
         <div className='small-container' />
       </div>
@@ -52,7 +71,12 @@ export default function ControlPanel({
             <h4>Hover Styles</h4>
           </div>
           <div className='selectors-container'>
-            <Button />
+            <Button
+              prop={hover}
+              setProp={setHover}
+              truthy={'on'}
+              falsey={'off'}
+            />
           </div>
         </div>
         <div className='small-container'>
@@ -68,7 +92,20 @@ export default function ControlPanel({
             </div>
           </div>
         </div>
-        <div className='small-container' />
+        <div className='small-container'>
+          <div className='label-container'>
+            <h5>.</h5>
+            <h4>Padding</h4>
+          </div>
+          <div className='selectors-container'>
+            <Counter
+              label='padding'
+              controlledProp={padding}
+              setControlledProp={setPadding}
+            />
+          </div>
+        </div>
+
         <div className='small-container' />
         <div className='small-container' />
       </div>

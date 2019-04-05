@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const styles = {
   btn: {
@@ -15,8 +15,11 @@ const styles = {
   }
 }
 
-export default function Button() {
-  let [hover, setHover] = useState(false)
-
-  return <button style={styles.btn}>{hover ? 'on' : 'off'}</button>
+export default function Button({ prop, setProp, truthy, falsey }) {
+  const opposite = !prop
+  return (
+    <button onClick={() => setProp(opposite)} style={styles.btn}>
+      {prop ? truthy : falsey}
+    </button>
+  )
 }

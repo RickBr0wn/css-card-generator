@@ -7,7 +7,6 @@ export default function App() {
       <Navbar />
       <Hero />
       <Card />
-      <Code />
     </div>
   )
 }
