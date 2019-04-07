@@ -1,71 +1,63 @@
-import React, { useState } from 'react'
-import '../CSS/card.css'
-import ControlPanel from './ControlPanel'
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+import { StoreContext } from '../Store/'
 
-const Card = () => {
-  let [radius, setRadius] = useState(0)
-  let [width, setWidth] = useState(0)
-  let [color, setColor] = useState('#ff0000')
-  let [hover, setHover] = useState(false)
-  let [image, setImage] = useState(null)
-  let [padding, setPadding] = useState(0)
+export default function Card() {
+  const [data] = useContext(StoreContext)
+  const {
+    cardWidth,
+    borderRadius,
+    padding,
+    borderWidth,
+    borderColor,
+    image,
+    innerPadding,
+    titleSize
+  } = data.card
 
-  const styles = {
-    card: {
-      position: 'absolute',
-      top: '20%',
-      left: '50%',
-      transform: 'translate(-50%, 0%)',
-      padding: `${padding}px`,
-      background: '#fff',
-      borderRadius: radius,
-      border: `${width}px ${color} solid`,
-      overflow: 'hidden'
-    },
-    code: {
-      fontSize: '12px',
-      padding: '0 3rem 1rem 3rem'
-    },
-    image: {
-      width: '100%',
-      // maxWidth: '450px',
-      overflow: 'hidden'
-    }
-  }
+  const StyledCard = styled.section`
+    background: #fff;
+    width: ${cardWidth}px;
+    border-radius: ${borderRadius}px;
+    overflow: hidden;
+    padding: ${padding}px;
+    border: ${borderWidth}px solid ${borderColor};
+  `
+
+  const StyledImage = styled.img`
+    width: 100%;
+    overflow: hidden;
+  `
+
+  const StyledTextContainer = styled.section`
+    padding: ${innerPadding}px;
+  `
+
+  const StyledTitle = styled.h1`
+    font-size: ${titleSize}px;
+  `
 
   return (
-    <div style={styles.card}>
+    <StyledCard>
       {image ? (
-        <img
-          style={styles.image}
+        <StyledImage
           src='https://source.unsplash.com/random/800x600'
           alt='A random placeholder'
         />
       ) : null}
-      <ControlPanel
-        radius={radius}
-        setRadius={setRadius}
-        width={width}
-        setWidth={setWidth}
-        color={color}
-        setColor={setColor}
-        hover={hover}
-        setHover={setHover}
-        image={image}
-        setImage={setImage}
-        padding={padding}
-        setPadding={setPadding}
-      />
-      <div style={styles.code}>
-        And here is your CSS ready to copy and paste!
-      </div>
-      <br />
-      <div style={styles.code}>{`border-radius: ${radius}px;`}</div>
-      <div style={styles.code}>
-        {width ? `border: ${width}px solid ${color};` : null}
-      </div>
-    </div>
+      <StyledTextContainer>
+        <StyledTitle>My New Card</StyledTitle>
+        <hr style={{ width: '100px' }} />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </StyledTextContainer>
+    </StyledCard>
   )
 }
-
-export default Card

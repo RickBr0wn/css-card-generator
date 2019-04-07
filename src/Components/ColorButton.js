@@ -5,7 +5,7 @@ export default function ColorButton({ color, setColor }) {
   const styles = {
     colorButtonContainer: {
       height: '28px',
-      width: '128px',
+      width: '60px',
       display: 'flex',
       border: '1px #ccc solid',
       borderRadius: '5px',

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { red } from 'ansi-colors'
 
 const styles = {
   textBox: {
@@ -15,7 +14,7 @@ const styles = {
   },
   container: {
     display: 'flex',
-    width: '70px'
+    marginLeft: '-24px'
   },
   buttonContainer: {
     position: 'relative',
@@ -32,8 +31,12 @@ const styles = {
   },
   label: {
     position: 'relative',
-    top: '-12px',
-    left: '30px'
+    top: '-14px',
+    left: '50%',
+    color: '#2cc3f2',
+    fontSize: '1rem',
+    marginBottom: '0.6rem',
+    textTransform: 'uppercase'
   },
   plus: { cursor: 'pointer' },
   minus: { cursor: 'pointer' },
@@ -51,28 +54,23 @@ export default function Counter({ label, controlledProp, setControlledProp }) {
 
   return (
     <div style={styles.container}>
-      <h5 style={styles.label}>{label}</h5>
+      <h5 style={styles.label}>{label} px</h5>
       <input
         type='text'
         style={styles.textBox}
-        value={`${controlledProp}px`}
-        onChange={event => {
-          if (typeof event.target.value !== 'number') {
-            return controlledProp
-          }
-          setControlledProp(event.target.value)
-        }}
+        value={controlledProp}
+        onChange={event => setControlledProp(event.target.value)}
       />
       <div style={styles.buttonContainer}>
         <div
           onClick={() => setControlledProp(controlledProp++)}
           style={styles.plus}>
-          <i class='fas fa-sort-up' />
+          <i className='fas fa-sort-up' />
         </div>
         <div
           onClick={() => setControlledProp(controlledProp--)}
           style={styles.minus}>
-          <i class='fas fa-sort-down' />
+          <i className='fas fa-sort-down' />
         </div>
       </div>
       <div style={styles.error}>

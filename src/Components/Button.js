@@ -3,7 +3,7 @@ import React from 'react'
 const styles = {
   btn: {
     height: '28px',
-    width: '128px',
+    width: '60px',
     display: 'flex',
     justifyContent: 'center',
     textTransform: 'uppercase',
