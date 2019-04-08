@@ -51,7 +51,10 @@ export default function ControlPanel() {
     borderColor,
     image,
     innerPadding,
-    titleSize
+    titleSize,
+    titleHR,
+    hrLength,
+    hrPadding
   } = data.card
   const {
     setCardWidth,
@@ -61,7 +64,10 @@ export default function ControlPanel() {
     setBorderColor,
     setImage,
     setInnerPadding,
-    setTitleSize
+    setTitleSize,
+    setTitleHR,
+    setHrLength,
+    setHrPadding
   } = data.setters
   return (
     <StyledContainer>
@@ -131,6 +137,43 @@ export default function ControlPanel() {
             label='title size'
             controlledProp={titleSize}
             setControlledProp={setTitleSize}
+          />
+        </StyledInnerRow>
+      </StyledRow>
+      <StyledRow>
+        <StyledInnerRow>
+          <StyledStandardText>title hr</StyledStandardText>
+          <Button
+            prop={titleHR}
+            setProp={setTitleHR}
+            truthy={'on'}
+            falsey={'off'}
+          />
+        </StyledInnerRow>
+        <StyledInnerRow>
+          <StyledStandardText>HR length</StyledStandardText>
+          <Counter
+            label='radius'
+            controlledProp={hrLength}
+            setControlledProp={setHrLength}
+          />
+        </StyledInnerRow>
+      </StyledRow>
+      <StyledRow>
+        <StyledInnerRow>
+          <StyledStandardText>hr padding</StyledStandardText>
+          <Counter
+            label='width'
+            controlledProp={hrPadding}
+            setControlledProp={setHrPadding}
+          />
+        </StyledInnerRow>
+        <StyledInnerRow>
+          <StyledStandardText>Padding</StyledStandardText>
+          <Counter
+            label='padding'
+            controlledProp={padding}
+            setControlledProp={setPadding}
           />
         </StyledInnerRow>
       </StyledRow>

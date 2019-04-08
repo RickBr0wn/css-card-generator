@@ -12,6 +12,9 @@ export default function Store({ children }) {
   let [image, setImage] = useState(false)
   let [innerPadding, setInnerPadding] = useState(0)
   let [titleSize, setTitleSize] = useState(14)
+  let [titleHR, setTitleHR] = useState(false)
+  let [hrLength, setHrLength] = useState(100)
+  let [hrPadding, setHrPadding] = useState(0)
 
   const data = {
     code: '',
@@ -24,7 +27,10 @@ export default function Store({ children }) {
       image,
       padding,
       innerPadding,
-      titleSize
+      titleSize,
+      titleHR,
+      hrLength,
+      hrPadding
     },
     setters: {
       setCardWidth,
@@ -35,7 +41,10 @@ export default function Store({ children }) {
       setImage,
       setPadding,
       setInnerPadding,
-      setTitleSize
+      setTitleSize,
+      setTitleHR,
+      setHrLength,
+      setHrPadding
     }
   }
 

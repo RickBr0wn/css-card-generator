@@ -12,7 +12,10 @@ export default function Card() {
     borderColor,
     image,
     innerPadding,
-    titleSize
+    titleSize,
+    titleHR,
+    hrLength,
+    hrPadding
   } = data.card
 
   const StyledCard = styled.section`
@@ -37,6 +40,11 @@ export default function Card() {
     font-size: ${titleSize}px;
   `
 
+  const StyledHR = styled.hr`
+    width: ${hrLength}px;
+    margin: ${hrPadding}px 1px;
+  `
+
   return (
     <StyledCard>
       {image ? (
@@ -47,7 +55,7 @@ export default function Card() {
       ) : null}
       <StyledTextContainer>
         <StyledTitle>My New Card</StyledTitle>
-        <hr style={{ width: '100px' }} />
+        {titleHR ? <StyledHR /> : null}
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
