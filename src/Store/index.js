@@ -15,6 +15,7 @@ export default function Store({ children }) {
   let [titleHR, setTitleHR] = useState(false)
   let [hrLength, setHrLength] = useState(100)
   let [hrPadding, setHrPadding] = useState(0)
+  let [textFontSize, setTextFontSize] = useState(16)
 
   const data = {
     code: '',
@@ -30,7 +31,8 @@ export default function Store({ children }) {
       titleSize,
       titleHR,
       hrLength,
-      hrPadding
+      hrPadding,
+      textFontSize
     },
     setters: {
       setCardWidth,
@@ -44,7 +46,8 @@ export default function Store({ children }) {
       setTitleSize,
       setTitleHR,
       setHrLength,
-      setHrPadding
+      setHrPadding,
+      setTextFontSize
     }
   }
 

@@ -15,7 +15,8 @@ export default function Card() {
     titleSize,
     titleHR,
     hrLength,
-    hrPadding
+    hrPadding,
+    textFontSize
   } = data.card
 
   const StyledCard = styled.section`
@@ -23,7 +24,7 @@ export default function Card() {
     width: ${cardWidth}px;
     border-radius: ${borderRadius}px;
     overflow: hidden;
-    padding: ${padding}px;
+    padding: ${padding / 2}px ${padding}px ${padding}px ${padding}px;
     border: ${borderWidth}px solid ${borderColor};
   `
 
@@ -33,7 +34,8 @@ export default function Card() {
   `
 
   const StyledTextContainer = styled.section`
-    padding: ${innerPadding}px;
+    padding: ${innerPadding / 2}px ${innerPadding}px ${innerPadding}px
+      ${innerPadding}px;
   `
 
   const StyledTitle = styled.h1`
@@ -43,6 +45,10 @@ export default function Card() {
   const StyledHR = styled.hr`
     width: ${hrLength}px;
     margin: ${hrPadding}px 1px;
+  `
+
+  const StyledText = styled.section`
+    font-size: ${textFontSize}px;
   `
 
   return (
@@ -56,7 +62,7 @@ export default function Card() {
       <StyledTextContainer>
         <StyledTitle>My New Card</StyledTitle>
         {titleHR ? <StyledHR /> : null}
-        <p>
+        <StyledText>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -64,7 +70,7 @@ export default function Card() {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        </StyledText>
       </StyledTextContainer>
     </StyledCard>
   )
