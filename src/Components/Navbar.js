@@ -1,21 +1,86 @@
 import React from 'react'
-import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import Switch from '@material-ui/core/Switch'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Brightness7Icon from '@material-ui/icons/Brightness7'
+import Brightness2Icon from '@material-ui/icons/Brightness2'
 
-const StyledNavbar = styled.section`
-  position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 2.4rem;
-  background: #fff;
-`
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  },
+  navbar: {
+    background: theme.palette.type === 'light' ? '#f5f5f5' : '#424242',
+    color: theme.palette.type === 'light' ? '#424242' : '#f5f5f5'
+  },
+  moon: {
+    marginTop: '4px',
+    color: 'grey'
+  },
+  sun: {
+    marginTop: '4px',
+    color: 'yellow'
+  }
+}))
 
-export default function Navbar() {
+const NavBar = ({ toggleDarkTheme, theme }) => {
+  const classes = useStyles()
+
   return (
-    <StyledNavbar>
-      <i className='fab fa-github' style={{ fontSize: '2.4rem' }} />
-      <h3>CSS Card Generator</h3>
-    </StyledNavbar>
+    <div className={classes.root}>
+      <AppBar position='static' className={classes.navbar}>
+        <Toolbar>
+          <IconButton
+            edge='start'
+            className={classes.menuButton}
+            color='inherit'
+            aria-label='menu'>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant='h6' className={classes.title}>
+            CSS Card Generator
+          </Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  value='checkedC'
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                  onChange={toggleDarkTheme}
+                  color='default'
+                />
+              }
+              label={
+                theme.palette.type === 'light' ? (
+                  <Brightness2Icon className={classes.moon} />
+                ) : (
+                  <Brightness7Icon className={classes.sun} />
+                )
+              }
+            />
+          </FormGroup>
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
+
+NavBar.propTypes = {
+  theme: PropTypes.object.isRequired,
+  toggleDarkTheme: PropTypes.func.isRequired
+}
+
+export default NavBar
