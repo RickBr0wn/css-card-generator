@@ -23,8 +23,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   navbar: {
-    background: theme.palette.type === 'light' ? '#f5f5f5' : '#424242',
-    color: theme.palette.type === 'light' ? '#424242' : '#f5f5f5'
+    background: theme.palette.type === 'light' ? '#bbb' : '#424242',
+    color: theme.palette.type === 'light' ? '#424242' : '#bbb'
   },
   moon: {
     marginTop: '4px',
