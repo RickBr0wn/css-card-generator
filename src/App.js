@@ -1,31 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
   MuiThemeProvider,
   createMuiTheme,
   makeStyles
-} from '@material-ui/core/styles'
-import { CssBaseline } from '@material-ui/core'
-import Container from '@material-ui/core/Container'
-import NavBar from './Components/NavBar'
-import Hero from './Components/Hero'
-import SimpleCard from './Components/SimpleCard'
-import PaperSheet from './Components/PaperSheet'
+} from "@material-ui/core/styles"
+import { CssBaseline } from "@material-ui/core"
+import Container from "@material-ui/core/Container"
+import NavBar from "./Components/NavBar"
+import Hero from "./Components/Hero"
+import SimpleCard from "./Components/SimpleCard"
+import PaperSheet from "./Components/PaperSheet"
 
 const App = () => {
   const [theme, setTheme] = useState({
     palette: {
-      type: 'dark'
+      type: "dark"
     }
   })
 
-  const toggleDarkTheme = () => {
-    let newPaletteType = theme.palette.type === 'light' ? 'dark' : 'light'
+  const toggleDarkTheme = () =>
     setTheme({
       palette: {
-        type: newPaletteType
+        type: theme.palette.type === "light" ? "dark" : "light"
       }
     })
-  }
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -36,7 +34,7 @@ const App = () => {
       width: 100
     },
     container: {
-      padding: '30px 0'
+      padding: "30px 0"
     }
   }))
 
@@ -48,7 +46,7 @@ const App = () => {
     <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <NavBar toggleDarkTheme={toggleDarkTheme} theme={theme} />
-      <Container maxWidth='md' className={classes.container}>
+      <Container maxWidth="md" className={classes.container}>
         <Hero />
         <SimpleCard />
         <PaperSheet />
