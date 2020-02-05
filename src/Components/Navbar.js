@@ -9,12 +9,13 @@ const StyledNavbar = styled.section`
   align-items: center;
   padding: 1.2rem 2.4rem;
   background: #fff;
+  z-index: 1000;
 `
 
 export default function Navbar() {
   return (
     <StyledNavbar>
-      <i className='fab fa-github' style={{ fontSize: '2.4rem' }} />
+      <i className="fab fa-github" style={{ fontSize: '2.4rem' }} />
       <h3>CSS Card Generator</h3>
     </StyledNavbar>
   )

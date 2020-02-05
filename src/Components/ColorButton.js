@@ -1,48 +1,66 @@
 import React, { useState } from 'react'
 import { SketchPicker } from 'react-color'
+import styled from 'styled-components'
+
+const StyledColorPicker = styled.div`
+  height: 32px;
+  border: 1px solid grey;
+  background-color: ${({ color }) => color};
+  width: 80px;
+  margin-top: 20px
+  padding-left: 6px;
+  border-radius: 5px;
+  padding-top: 20px;
+  position: relative;
+`
+
+const StyledLabel = styled.label`
+  position: absolute;
+  top: -23px;
+  left: 1px;
+  font-size: 14px;
+  width: 100%;
+`
+
+const StyledModal = styled.div`
+  position: absolute;
+  z-index: 2;
+`
 
 export default function ColorButton({ color, setColor }) {
-  const styles = {
-    colorButtonContainer: {
-      height: '28px',
-      width: '60px',
-      display: 'flex',
-      border: '1px #ccc solid',
-      borderRadius: '5px',
-      marginLeft: '26px',
-      background: color
-    },
-    popover: {
-      position: 'absolute',
-      zIndex: 2
-    },
-    cover: {
-      position: 'fixed',
-      top: '0px',
-      right: '0px',
-      bottom: '0px',
-      left: '0px'
-    }
-  }
   let [display, setDisplay] = useState(false)
 
   return (
-    <div
-      onClick={() => {
-        setDisplay(!display)
-      }}
-      style={styles.colorButtonContainer}>
+    <StyledColorPicker color={color} onClick={() => setDisplay(prev => !prev)}>
+      <StyledLabel color={color} htmlFor="input">
+        border color
+      </StyledLabel>
       {display ? (
-        <div style={styles.popover}>
-          <div style={styles.cover} onChange={() => setDisplay(false)} />
+        <StyledModal>
+          <StyledModal onChange={() => setDisplay(false)} />
           <SketchPicker
             color={color}
-            onChange={(color, event) => {
-              setColor(color.hex)
-            }}
+            onChangeComplete={col => setColor(col.hex)}
           />
-        </div>
+        </StyledModal>
       ) : null}
-    </div>
+    </StyledColorPicker>
+    // <div
+    //   onClick={() => {
+    //     setDisplay(!display)
+    //   }}
+    //   style={styles.colorButtonContainer}>
+    //   {display ? (
+    //     <div style={styles.popover}>
+    //       <div style={styles.cover} onChange={() => setDisplay(false)} />
+    //       <SketchPicker
+    //         color={color}
+    //         onChange={(color, event) => {
+    //           setColor(color.hex)
+    //         }}
+    //       />
+    //     </div>
+    //   ) : null}
+    // </div>
   )
 }

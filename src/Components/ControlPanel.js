@@ -5,43 +5,38 @@ import Counter from './Counter'
 import ColorButton from './ColorButton'
 import Button from './Button'
 
+const StyledOuterContainer = styled.section`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background: rgba(221, 221, 221);
+  height: 100vh;
+  padding: 80px 30px;
+  margin: 0 auto;
+`
+
+const StyledLabel = styled.label`
+  background: rgba(221, 221, 221);
+  width: fit-content;
+  margin-left: 20px
+
+  position: absolute;
+  top: -10px;
+`
+const StyledGrid = styled.div`
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 30px;
+`
+
 export default function ControlPanel() {
-  const StyledContainer = styled.section`
-    display: flex;
-    flex-direction: column;
-    background: rgba(221, 221, 221, 0.7);
-    width: 450px;
-    height: 100%;
-    padding: 60px 30px;
-  `
-
-  const StyledRow = styled.section`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 46px;
-  `
-  const StyledInnerRow = styled.section`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  `
-
-  const StyledSmallText = styled.h5`
-    color: #2cc3f2;
-    font-size: 1rem;
-    margin-bottom: 0.6rem;
-    text-transform: uppercase;
-  `
-
-  const StyledStandardText = styled.p`
-    font-size: 1.2rem;
-    color: #333;
-    font-weight: 400;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  `
-
   const [data] = useContext(StoreContext)
   const {
     cardWidth,
@@ -55,7 +50,7 @@ export default function ControlPanel() {
     titleHR,
     hrLength,
     hrPadding,
-    textFontSize
+    textFontSize,
   } = data.card
   const {
     setCardWidth,
@@ -69,134 +64,204 @@ export default function ControlPanel() {
     setTitleHR,
     setHrLength,
     setHrPadding,
-    setTextFontSize
+    setTextFontSize,
   } = data.setters
   return (
-    <StyledContainer>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>Card Width</StyledStandardText>
-          <Counter
-            label='width'
-            controlledProp={cardWidth}
-            setControlledProp={setCardWidth}
-          />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>Padding</StyledStandardText>
-          <Counter
-            label='padding'
-            controlledProp={padding}
-            setControlledProp={setPadding}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>Border Radius</StyledStandardText>
-          <Counter
-            label='radius'
-            controlledProp={borderRadius}
-            setControlledProp={setBorderRadius}
-          />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>add image</StyledStandardText>
-          <Button
-            prop={image}
-            setProp={setImage}
-            truthy={'on'}
-            falsey={'off'}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>Border Color</StyledStandardText>
-          <ColorButton color={borderColor} setColor={setBorderColor} />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>Border Width</StyledStandardText>
-          <Counter
-            label='width'
-            controlledProp={borderWidth}
-            setControlledProp={setBorderWidth}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>Text padding</StyledStandardText>
-          <Counter
-            label='inner'
-            controlledProp={innerPadding}
-            setControlledProp={setInnerPadding}
-          />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>Title size</StyledStandardText>
-          <Counter
-            label='title size'
-            controlledProp={titleSize}
-            setControlledProp={setTitleSize}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>title hr</StyledStandardText>
-          <Button
-            prop={titleHR}
-            setProp={setTitleHR}
-            truthy={'on'}
-            falsey={'off'}
-          />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>HR length</StyledStandardText>
-          <Counter
-            label='radius'
-            controlledProp={hrLength}
-            setControlledProp={setHrLength}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>hr padding</StyledStandardText>
-          <Counter
-            label='width'
-            controlledProp={hrPadding}
-            setControlledProp={setHrPadding}
-          />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>Padding</StyledStandardText>
-          <Counter
-            label='padding'
-            controlledProp={padding}
-            setControlledProp={setPadding}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-      <StyledRow>
-        <StyledInnerRow>
-          <StyledStandardText>text font size</StyledStandardText>
-          <Counter
-            label='width'
-            controlledProp={textFontSize}
-            setControlledProp={setTextFontSize}
-          />
-        </StyledInnerRow>
-        <StyledInnerRow>
-          <StyledStandardText>Padding</StyledStandardText>
-          <Counter
-            label='padding'
-            controlledProp={padding}
-            setControlledProp={setPadding}
-          />
-        </StyledInnerRow>
-      </StyledRow>
-    </StyledContainer>
+    <StyledOuterContainer>
+      <StyledGrid id="card-details">
+        <StyledLabel htmlFor="card-details">Card Details</StyledLabel>
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="border radius"
+          controlledProp={borderRadius}
+          setControlledProp={setBorderRadius}
+        />
+        <Counter
+          label="padding"
+          controlledProp={padding}
+          setControlledProp={setPadding}
+        />
+        <Counter
+          label="border width"
+          controlledProp={borderWidth}
+          setControlledProp={setBorderWidth}
+        />
+        <ColorButton
+          label="border color"
+          color={borderColor}
+          setColor={setBorderColor}
+        />
+        <Counter
+          label="border radius"
+          controlledProp={borderRadius}
+          setControlledProp={setBorderRadius}
+        />
+      </StyledGrid>
+      {/* HERE *********************************************************** */}
+      <StyledGrid id="image-details">
+        <StyledLabel htmlFor="image-details">Image Details</StyledLabel>
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          setControlledProp={setCardWidth}
+        />
+      </StyledGrid>
+    </StyledOuterContainer>
+    // <StyledOuterContainer>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       {/* <StyledStandardText>Card Width</StyledStandardText> */}
+    //       <Counter
+    //         label="card width"
+    //         controlledProp={cardWidth}
+    //         setControlledProp={setCardWidth}
+    //       />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //       {/* <StyledStandardText>Padding</StyledStandardText> */}
+    //       <Counter
+    //         label="padding"
+    //         controlledProp={padding}
+    //         setControlledProp={setPadding}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       {/* <StyledStandardText>Border Radius</StyledStandardText> */}
+    //       <Counter
+    //         label="border radius"
+    //         controlledProp={borderRadius}
+    //         setControlledProp={setBorderRadius}
+    //       />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //   HERE ********************************************************************************************
+    //       <StyledStandardText>add image</StyledStandardText>
+    //       <Button
+    //         prop={image}
+    //         setProp={setImage}
+    //         truthy={'on'}
+    //         falsey={'off'}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>Border Color</StyledStandardText>
+    //       <ColorButton color={borderColor} setColor={setBorderColor} />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>Border Width</StyledStandardText>
+    //       <Counter
+    //         label="width"
+    //         controlledProp={borderWidth}
+    //         setControlledProp={setBorderWidth}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>Text padding</StyledStandardText>
+    //       <Counter
+    //         label="inner"
+    //         controlledProp={innerPadding}
+    //         setControlledProp={setInnerPadding}
+    //       />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>Title size</StyledStandardText>
+    //       <Counter
+    //         label="title size"
+    //         controlledProp={titleSize}
+    //         setControlledProp={setTitleSize}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>title hr</StyledStandardText>
+    //       <Button
+    //         prop={titleHR}
+    //         setProp={setTitleHR}
+    //         truthy={'on'}
+    //         falsey={'off'}
+    //       />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>HR length</StyledStandardText>
+    //       <Counter
+    //         label="radius"
+    //         controlledProp={hrLength}
+    //         setControlledProp={setHrLength}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>hr padding</StyledStandardText>
+    //       <Counter
+    //         label="width"
+    //         controlledProp={hrPadding}
+    //         setControlledProp={setHrPadding}
+    //       />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>Padding</StyledStandardText>
+    //       <Counter
+    //         label="padding"
+    //         controlledProp={padding}
+    //         setControlledProp={setPadding}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    //   <StyledRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>text font size</StyledStandardText>
+    //       <Counter
+    //         label="width"
+    //         controlledProp={textFontSize}
+    //         setControlledProp={setTextFontSize}
+    //       />
+    //     </StyledInnerRow>
+    //     <StyledInnerRow>
+    //       <StyledStandardText>Padding</StyledStandardText>
+    //       <Counter
+    //         label="padding"
+    //         controlledProp={padding}
+    //         setControlledProp={setPadding}
+    //       />
+    //     </StyledInnerRow>
+    //   </StyledRow>
+    // </StyledOuterContainer>
   )
 }

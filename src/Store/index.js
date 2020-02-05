@@ -3,19 +3,19 @@ import { ADD_TODO } from '../Constants'
 export const StoreContext = createContext({})
 
 export default function Store({ children }) {
-  let [cardWidth, setCardWidth] = useState(450)
+  let [cardWidth, setCardWidth] = useState(300)
   let [borderRadius, setBorderRadius] = useState(0)
   let [borderWidth, setBorderWidth] = useState(0)
-  let [borderColor, setBorderColor] = useState('#ff0000')
+  let [borderColor, setBorderColor] = useState('#68F381')
   let [hoverStyles, setHoverStyles] = useState(false)
-  let [padding, setPadding] = useState(0)
-  let [image, setImage] = useState(false)
+  let [padding, setPadding] = useState(10)
+  let [image, setImage] = useState(true)
   let [innerPadding, setInnerPadding] = useState(0)
   let [titleSize, setTitleSize] = useState(14)
   let [titleHR, setTitleHR] = useState(false)
   let [hrLength, setHrLength] = useState(100)
   let [hrPadding, setHrPadding] = useState(0)
-  let [textFontSize, setTextFontSize] = useState(16)
+  let [textFontSize, setTextFontSize] = useState(12)
 
   const data = {
     code: '',
@@ -32,7 +32,7 @@ export default function Store({ children }) {
       titleHR,
       hrLength,
       hrPadding,
-      textFontSize
+      textFontSize,
     },
     setters: {
       setCardWidth,
@@ -47,8 +47,8 @@ export default function Store({ children }) {
       setTitleHR,
       setHrLength,
       setHrPadding,
-      setTextFontSize
-    }
+      setTextFontSize,
+    },
   }
 
   return (
