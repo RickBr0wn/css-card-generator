@@ -1,30 +1,32 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { StoreContext } from '../Store/'
+import { useStateContext } from '../Store/index'
 
 export default function Card() {
-  const [data] = useContext(StoreContext)
+  const state = useStateContext()
   const {
     cardWidth,
     borderRadius,
-    padding,
+    outerPadding,
     borderWidth,
     borderColor,
     image,
+    imageUrl,
     innerPadding,
     titleSize,
     titleHR,
     hrLength,
     hrPadding,
-    textFontSize
-  } = data.card
+    textFontSize,
+  } = state
 
   const StyledCard = styled.section`
     background: #fff;
     width: ${cardWidth}px;
     border-radius: ${borderRadius}px;
     overflow: hidden;
-    padding: ${padding / 2}px ${padding}px ${padding}px ${padding}px;
+    padding: ${outerPadding / 2}px ${outerPadding}px ${outerPadding}px
+      ${outerPadding}px;
     border: ${borderWidth}px solid ${borderColor};
   `
 
@@ -50,15 +52,11 @@ export default function Card() {
   const StyledText = styled.section`
     font-size: ${textFontSize}px;
   `
+  console.log({ imageUrl })
 
   return (
     <StyledCard>
-      {image ? (
-        <StyledImage
-          src='https://source.unsplash.com/random/800x600'
-          alt='A random placeholder'
-        />
-      ) : null}
+      {image ? <StyledImage src={imageUrl} alt="A random placeholder" /> : null}
       <StyledTextContainer>
         <StyledTitle>My New Card</StyledTitle>
         {titleHR ? <StyledHR /> : null}

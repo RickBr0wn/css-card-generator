@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { SketchPicker } from 'react-color'
 import styled from 'styled-components'
+import { useDispatchContext } from '../Store/index'
 
 const StyledColorPicker = styled.div`
   height: 32px;
@@ -27,8 +28,9 @@ const StyledModal = styled.div`
   z-index: 2;
 `
 
-export default function ColorButton({ color, setColor }) {
+export default function ColorButton({ color, controlledPropConstant }) {
   let [display, setDisplay] = useState(false)
+  const dispatch = useDispatchContext()
 
   return (
     <StyledColorPicker color={color} onClick={() => setDisplay(prev => !prev)}>
@@ -40,7 +42,9 @@ export default function ColorButton({ color, setColor }) {
           <StyledModal onChange={() => setDisplay(false)} />
           <SketchPicker
             color={color}
-            onChangeComplete={col => setColor(col.hex)}
+            onChangeComplete={col =>
+              dispatch({ type: controlledPropConstant, payload: col.hex })
+            }
           />
         </StyledModal>
       ) : null}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useDispatchContext } from '../Store/index'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -55,7 +56,12 @@ const StyledSpan = styled.span`
   font-size: 12px;
 `
 
-export default function Counter({ label, controlledProp, setControlledProp }) {
+export default function Counter({
+  label,
+  controlledProp,
+  controlledPropConstant,
+}) {
+  const dispatch = useDispatchContext()
   return (
     <StyledContainer>
       <StyledLabel htmlFor="input">{label}</StyledLabel>
@@ -63,13 +69,15 @@ export default function Counter({ label, controlledProp, setControlledProp }) {
         type="text"
         id="input"
         value={controlledProp}
-        onChange={e => setControlledProp(e.target.value)}
+        onChange={() => {}}
       />
       <StyledButtonContainer>
-        <StyledUp onClick={() => setControlledProp(controlledProp++)}>
+        <StyledUp
+          onClick={() => dispatch({ type: controlledPropConstant + '_UP' })}>
           <i className="fas fa-sort-up" />
         </StyledUp>
-        <StyledDown onClick={() => setControlledProp(controlledProp--)}>
+        <StyledDown
+          onClick={() => dispatch({ type: controlledPropConstant + '_DOWN' })}>
           <i className="fas fa-sort-down" />
         </StyledDown>
       </StyledButtonContainer>
