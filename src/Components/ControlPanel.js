@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { StoreContext } from '../Store'
+import { StateContext } from '../Store'
 import Counter from './Counter'
 import ColorButton from './ColorButton'
 import Button from './Button'
+import { useStateContext } from '../Store/index'
 
 const StyledOuterContainer = styled.section`
   display: flex;
@@ -13,6 +14,7 @@ const StyledOuterContainer = styled.section`
   height: 100vh;
   padding: 80px 30px;
   margin: 0 auto;
+  overflow-y: auto;
 `
 
 const StyledLabel = styled.label`
@@ -31,17 +33,17 @@ const StyledGrid = styled.div`
   border-radius: 5px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto;
   grid-gap: 16px;
   margin-bottom: 30px;
 `
 
 export default function ControlPanel() {
-  const [data] = useContext(StoreContext)
+  const state = useStateContext()
   const {
     cardWidth,
     borderRadius,
-    padding,
+    outerPadding,
     borderWidth,
     borderColor,
     image,
@@ -51,21 +53,8 @@ export default function ControlPanel() {
     hrLength,
     hrPadding,
     textFontSize,
-  } = data.card
-  const {
-    setCardWidth,
-    setBorderRadius,
-    setPadding,
-    setBorderWidth,
-    setBorderColor,
-    setImage,
-    setInnerPadding,
-    setTitleSize,
-    setTitleHR,
-    setHrLength,
-    setHrPadding,
-    setTextFontSize,
-  } = data.setters
+  } = state
+
   return (
     <StyledOuterContainer>
       <StyledGrid id="card-details">
@@ -73,32 +62,29 @@ export default function ControlPanel() {
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          controlledPropConstant={'CARD_WIDTH'}
         />
         <Counter
-          label="border radius"
-          controlledProp={borderRadius}
-          setControlledProp={setBorderRadius}
+          label="outer padding"
+          controlledProp={outerPadding}
+          controlledPropConstant={'OUTER_PADDING'}
         />
-        <Counter
-          label="padding"
-          controlledProp={padding}
-          setControlledProp={setPadding}
-        />
+        {/* For a blank space in top grid */}
+        <div></div>
         <Counter
           label="border width"
           controlledProp={borderWidth}
-          setControlledProp={setBorderWidth}
+          controlledPropConstant={'BORDER_WIDTH'}
         />
         <ColorButton
           label="border color"
           color={borderColor}
-          setColor={setBorderColor}
+          controlledPropConstant={'SET_COLOR'}
         />
         <Counter
           label="border radius"
           controlledProp={borderRadius}
-          setControlledProp={setBorderRadius}
+          controlledPropConstant={'BORDER_RADIUS'}
         />
       </StyledGrid>
       {/* HERE *********************************************************** */}
@@ -107,32 +93,141 @@ export default function ControlPanel() {
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          // setControlledProp={setCardWidth}
         />
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          // setControlledProp={setCardWidth}
         />
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          // setControlledProp={setCardWidth}
         />
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          // setControlledProp={setCardWidth}
         />
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          // setControlledProp={setCardWidth}
         />
         <Counter
           label="card width"
           controlledProp={cardWidth}
-          setControlledProp={setCardWidth}
+          // setControlledProp={setCardWidth}
+        />
+      </StyledGrid>
+      <StyledGrid id="image-details">
+        <StyledLabel htmlFor="image-details">Image Details</StyledLabel>
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+      </StyledGrid>
+      <StyledGrid id="image-details">
+        <StyledLabel htmlFor="image-details">Image Details</StyledLabel>
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+      </StyledGrid>
+      <StyledGrid id="image-details">
+        <StyledLabel htmlFor="image-details">Image Details</StyledLabel>
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
+        />
+        <Counter
+          label="card width"
+          controlledProp={cardWidth}
+          // setControlledProp={setCardWidth}
         />
       </StyledGrid>
     </StyledOuterContainer>
