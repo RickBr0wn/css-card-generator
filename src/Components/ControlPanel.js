@@ -4,6 +4,7 @@ import { StateContext } from '../Store'
 import Counter from './Counter'
 import ColorButton from './ColorButton'
 import Button from './Button'
+import Tab from './Tab'
 import { useStateContext } from '../Store/index'
 
 const StyledOuterContainer = styled.section`
@@ -12,7 +13,7 @@ const StyledOuterContainer = styled.section`
   flex-direction: column;
   background: rgba(221, 221, 221);
   height: 100vh;
-  padding: 80px 30px;
+  padding: 80px 22px 22px 22px;
   margin: 0 auto;
   overflow-y: auto;
 `
@@ -21,10 +22,10 @@ const StyledLabel = styled.label`
   background: rgba(221, 221, 221);
   width: fit-content;
   margin-left: 20px
-
   position: absolute;
   top: -10px;
 `
+
 const StyledGrid = styled.div`
   margin: 0 auto;
   position: relative;
@@ -38,7 +39,7 @@ const StyledGrid = styled.div`
   margin-bottom: 30px;
 `
 
-export default function ControlPanel() {
+export default function ControlPanel({ setIsOpen }) {
   const state = useStateContext()
   const {
     cardWidth,
@@ -57,6 +58,7 @@ export default function ControlPanel() {
 
   return (
     <StyledOuterContainer>
+      <Button setIsOpen={setIsOpen} />
       <StyledGrid id="card-details">
         <StyledLabel htmlFor="card-details">Card Details</StyledLabel>
         <Counter

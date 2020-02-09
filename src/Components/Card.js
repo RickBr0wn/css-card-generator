@@ -21,6 +21,7 @@ export default function Card() {
   } = state
 
   const StyledCard = styled.section`
+    margin: 0 auto;
     background: #fff;
     width: ${cardWidth}px;
     border-radius: ${borderRadius}px;

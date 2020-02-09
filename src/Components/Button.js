@@ -1,25 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const styles = {
-  btn: {
-    height: '28px',
-    width: '60px',
-    display: 'flex',
-    justifyContent: 'center',
-    textTransform: 'uppercase',
-    border: '1px #ccc solid',
-    borderRadius: '5px',
-    marginLeft: '26px',
-    background: '#ccc',
-    color: '#000'
-  }
-}
+const StyledButton = styled.div`
+  position: absolute;
+  top: 54px;
+  left: 10px;
+  cursor: pointer;
+`
 
-export default function Button({ prop, setProp, truthy, falsey }) {
-  const opposite = !prop
+export default function Button({ setIsOpen }) {
   return (
-    <button onClick={() => setProp(opposite)} style={styles.btn}>
-      {prop ? truthy : falsey}
-    </button>
+    <StyledButton onClick={() => setIsOpen(prev => !prev)}>
+      <i class="fas fa-camera" />
+    </StyledButton>
   )
 }
