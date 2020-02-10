@@ -28,9 +28,7 @@ const Right = styled.section`
   width: 400px;
   ${props =>
     props.isOpen
-      ? `
-         width: 400px; 
-        `
+      ? `width: 400px;`
       : `
          width: 30px;
          overflow: hidden;
@@ -41,7 +39,7 @@ const Right = styled.section`
 `
 
 export default function App() {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(true)
   return (
     <div>
       <Store>

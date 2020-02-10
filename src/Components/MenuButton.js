@@ -4,8 +4,8 @@ import styled from 'styled-components'
 const StyledButton = styled.div`
   position: absolute;
   background: rgba(221, 221, 221);
-  top: 54px;
-  left: 10px;
+  top: 62px;
+  left: 7px;
   cursor: pointer;
   display: flex;
   flex-direction: column;

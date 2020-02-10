@@ -41,6 +41,9 @@ const reducer = function(state, action) {
       return Object.assign({}, state, { borderColor: action.payload })
     case 'SET_IMAGE':
       return Object.assign({}, state, { imageUrl: action.payload })
+    case 'SET_IMAGE_VISIBILITY':
+      const currentImageVisibilityState = state.image
+      return Object.assign({}, state, { image: !currentImageVisibilityState })
     default:
       return state
   }

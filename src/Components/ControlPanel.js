@@ -4,6 +4,7 @@ import { StateContext } from '../Store'
 import Counter from './Counter'
 import ColorButton from './ColorButton'
 import Button from './Button'
+import BlankButton from './BlankButton'
 import Tab from './Tab'
 import { useStateContext } from '../Store/index'
 
@@ -92,11 +93,7 @@ export default function ControlPanel({ setIsOpen }) {
       {/* HERE *********************************************************** */}
       <StyledGrid id="image-details">
         <StyledLabel htmlFor="image-details">Image Details</StyledLabel>
-        <Counter
-          label="card width"
-          controlledProp={cardWidth}
-          // setControlledProp={setCardWidth}
-        />
+        <BlankButton label="image: on/off" />
         <Counter
           label="card width"
           controlledProp={cardWidth}
