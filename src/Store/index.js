@@ -14,6 +14,7 @@ const data = {
   hrLength: 100,
   hrPadding: 0,
   textFontSize: 12,
+  refresh: false,
 }
 
 export const StateContext = React.createContext()
@@ -44,6 +45,9 @@ const reducer = function(state, action) {
     case 'SET_IMAGE_VISIBILITY':
       const currentImageVisibilityState = state.image
       return Object.assign({}, state, { image: !currentImageVisibilityState })
+    case 'REFRESH_IMAGE':
+      const currentRefreshState = state.refresh
+      return Object.assign({}, state, { refresh: !currentRefreshState })
     default:
       return state
   }
@@ -60,7 +64,7 @@ export default function StateAndDispatchProvider({ children }) {
         .catch(err => console.log(err))
     }
     return () => (isLoading = false)
-  }, [])
+  }, [state.refresh])
 
   return (
     <StateContext.Provider value={state}>

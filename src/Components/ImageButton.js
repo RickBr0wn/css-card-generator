@@ -31,7 +31,7 @@ const StyledButtonText = styled.div`
   left: 20px;
 `
 
-const BlankButton = ({ label }) => {
+const ImageButton = () => {
   const [imageVisibility, setImageVisibility] = React.useState(true)
   const dispatch = useDispatchContext()
   const { image } = useStateContext()
@@ -40,10 +40,10 @@ const BlankButton = ({ label }) => {
     <StyledButton
       image={image}
       onClick={() => dispatch({ type: 'SET_IMAGE_VISIBILITY' })}>
-      <StyledLabel htmlFor="">Image: </StyledLabel>
+      <StyledLabel>image</StyledLabel>
       <StyledButtonText>{image ? 'ON' : 'OFF'}</StyledButtonText>
     </StyledButton>
   )
 }
 
-export default BlankButton
+export default ImageButton

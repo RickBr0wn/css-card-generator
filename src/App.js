@@ -30,7 +30,7 @@ const Right = styled.section`
     props.isOpen
       ? `width: 400px;`
       : `
-         width: 30px;
+         width: 20px;
          overflow: hidden;
         `}
   display: flex;
@@ -54,7 +54,7 @@ export default function App() {
             </Right>
           ) : (
             <Right isOpen={isOpen}>
-              <MenuButton setIsOpen={setIsOpen} />
+              <ControlPanel setIsOpen={setIsOpen} />
             </Right>
           )}
         </Container>
