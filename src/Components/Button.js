@@ -11,7 +11,7 @@ const StyledButton = styled.div`
 export default function Button({ setIsOpen }) {
   return (
     <StyledButton onClick={() => setIsOpen(prev => !prev)}>
-      <i class="fas fa-camera" />
+      <i className="fas fa-camera" />
     </StyledButton>
   )
 }

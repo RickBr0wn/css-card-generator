@@ -53,7 +53,6 @@ export default function Card() {
   const StyledText = styled.section`
     font-size: ${textFontSize}px;
   `
-  console.log({ imageUrl })
 
   return (
     <StyledCard>

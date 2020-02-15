@@ -1,10 +1,11 @@
 import React from 'react'
+import { cardReducer, imageReducer, combineReducers } from '../Reducers'
 
 const data = {
   cardWidth: 300,
   borderRadius: 5,
   borderWidth: 0,
-  borderColor: '#68f381',
+  borderColor: '#ACCAAC',
   outerPadding: 0,
   image: true,
   imageUrl: null,
@@ -20,41 +21,11 @@ const data = {
 export const StateContext = React.createContext()
 export const DispatchContext = React.createContext()
 
-const reducer = function(state, action) {
-  switch (action.type) {
-    case 'CARD_WIDTH_UP':
-      return Object.assign({}, state, { cardWidth: state.cardWidth + 1 })
-    case 'CARD_WIDTH_DOWN':
-      return Object.assign({}, state, { cardWidth: state.cardWidth - 1 })
-    case 'BORDER_RADIUS_UP':
-      return Object.assign({}, state, { borderRadius: state.borderRadius + 1 })
-    case 'BORDER_RADIUS_DOWN':
-      return Object.assign({}, state, { borderRadius: state.borderRadius - 1 })
-    case 'OUTER_PADDING_UP':
-      return Object.assign({}, state, { outerPadding: state.outerPadding + 1 })
-    case 'OUTER_PADDING_DOWN':
-      return Object.assign({}, state, { outerPadding: state.outerPadding - 1 })
-    case 'BORDER_WIDTH_UP':
-      return Object.assign({}, state, { borderWidth: state.borderWidth + 1 })
-    case 'BORDER_WIDTH_DOWN':
-      return Object.assign({}, state, { borderWidth: state.borderWidth - 1 })
-    case 'SET_COLOR':
-      return Object.assign({}, state, { borderColor: action.payload })
-    case 'SET_IMAGE':
-      return Object.assign({}, state, { imageUrl: action.payload })
-    case 'SET_IMAGE_VISIBILITY':
-      const currentImageVisibilityState = state.image
-      return Object.assign({}, state, { image: !currentImageVisibilityState })
-    case 'REFRESH_IMAGE':
-      const currentRefreshState = state.refresh
-      return Object.assign({}, state, { refresh: !currentRefreshState })
-    default:
-      return state
-  }
-}
-
 export default function StateAndDispatchProvider({ children }) {
-  const [state, dispatch] = React.useReducer(reducer, data)
+  const [state, dispatch] = React.useReducer(
+    combineReducers(cardReducer, imageReducer),
+    data
+  )
 
   React.useEffect(() => {
     let isLoading = true
